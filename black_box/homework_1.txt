@@ -2,19 +2,50 @@ Equivalence Partitioning
 
 1. Function that validates credit card numbers.
    - Valid card numbers: Length between 13 and 16 digits, containing only numeric digits.
+   aaaaaaaaaaaaaaa   Invalid
+   1234567891012     Valid
+   12345678910       Invalid
+   1                 Invalid
+   123456789101      Invalid
+   1234567891012131  Invalid
+   12345678910121314  Invalid
+   a0a0a0a0a0a0a0a0  Invalid
+
 
 2. Function that validates dates.
    - Valid years: Between 1900 and 2100.
    - Valid months: Between 1 and 12.
    - Valid days: Between 1 and 31.
 
+   1899/12/31  Invalid
+   1900/01/01  Valid
+   2100/12/31  Valid
+   2100/13/31  Invalid
+   2100/12/32  Invalid
+   2100/01/00  Invalid
+   2100/00/01  Invalid
+   2000/06/31  Valid (Pero no es correcto en junio)
+
 3. Function that checks the eligibility of a passenger to book a flight.
    - Eligible ages: Between 18 and 65.
    - Frequent flyers: True or False.
+   (supongo que para que sea elegible debe cumplir ambas condiciones)
+   17 True  No-elegible
+   18 True  elegible
+   65 False No-elegible
+   65 True elegible
+   66 True No-elegible
+
 
 4. Function that validates URLs.
    - Valid URLs: Length less than or equal to 255, starting with "http://" or "https://".
-
+   "(Fake_url_255_length)" Invalid
+   "http://+(Fake_url_248_length)"   Valid
+   "https://+(Fake_url_247_length)"   Valid
+   "http://+(Fake_url_20_length)"   Valid
+   "https://+(Fake_url_20_length)"   Valid
+   "http://+(Fake_url_255_length)"   Invalid
+   "https://+(Fake_url_255_length)"   Invalid
 
 Boundary Value Analysis
 
@@ -25,6 +56,21 @@ Boundary Value Analysis
    - If the income is between $30,000 and $60,000 (inclusive) and the credit score is below or equal to 700, the person is eligible for a secured loan.
    - If the income is greater than $60,000 and the credit score is above 750, the person is eligible for a premium loan.
    - If the income is greater than $60,000 and the credit score is between 700 and 750 (inclusive), the person is eligible for a standard loan.
+   29,999.99   not elegible
+   30,000   score:700  secured loan
+   30,000   score:700.01  standard loan
+   30,000   score:701   standard loan
+   30,000   score:700  secured loan
+   30,000   score:700.01  standard loan
+   30,000   score:701   standard loan
+   60,000.01   score:750.01   premium loan
+   60,000.01   score:751   premium loan
+   60,001   score:700.01   standard loan
+   60,001   score:701   standard loan
+   60,001   score:749.99   standard loan
+   60,001   score:750.01   premium loan
+   60,001   score:751   premium loan
+
 
 2. Function that determines the category of a product in an e-commerce system based on its price.
    The product categories and pricing rules are as follows:
@@ -32,12 +78,36 @@ Boundary Value Analysis
    - Category B: Products priced between $51 and $100 (inclusive).
    - Category C: Products priced between $101 and $200 (inclusive).
    - Category D: Products priced above $200.
+   9.99  ???
+   10 A
+   10.01 A
+   50 A
+   50.99 A
+   51 B
+   100   B
+   100.99 B
+   101   C
+   200   C
+   200.99   D
+   201   D
 
 3. Function that calculates the cost of shipping for packages based on their weight and dimensions.
    The shipping cost rules are as follows:
    - If the weight of the package is less than or equal to 1 kg and the dimensions (length, width, and height) are each less than or equal to 10 cm, the cost is $5.
    - If the weight is between 1 and 5 kg (inclusive) and the dimensions are each between 11 and 30 cm (inclusive), the cost is $10.
    - If the weight is greater than 5 kg or any of the dimensions is greater than 30 cm, the cost is $20.
+   1kg   10,10,10    $5
+   0.99kg   9.99,9.99,9.99    $5
+   1kg   10.01,10.01,10.01    $??? (se dice <=10 o 11 inclusive no se especifica que pasa entre estos 2)
+   0.99kg   10,10,15    $??? (NO SE especifica si el peso es ,<1 y las dimensions son mayores a 10)
+   1kg   10,10,15    $10
+   1kg   10,10,30    $10
+   1kg   10,10,30.01    $20
+   1kg   10,10,31    $20
+   5kg   10,10,30    $10
+   5kg   10,10,30.01    $20
+   5kg   30,30,30    $20
+
 
 
 Decision Table
