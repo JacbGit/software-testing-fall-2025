@@ -449,6 +449,16 @@ class TrafficLight:
         return self.state
 
 
+print("-Traffic light tests-")
+light = TrafficLight()
+light.change_state()
+print("input: RED Result: " + light.get_current_state())
+light.change_state()
+print("input: Green Result: " + light.get_current_state())
+light.change_state()
+print("input: Yellow Result: " + light.get_current_state())
+
+
 # 24
 class UserAuthentication:
     """
