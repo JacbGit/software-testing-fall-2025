@@ -62,6 +62,15 @@ def check_number_status(number):
     return "Zero"
 
 
+print("-Number status test-")
+print("input: 0     Result: " + check_number_status(0))
+print("input: -1     Result: " + check_number_status(-1))
+print("input: 1     Result: " + check_number_status(1))
+# print("input: ""     Result: "+check_number_status(""))
+print("input: True     Result: " + check_number_status(True))
+print("input: False     Result: " + check_number_status(False))
+
+
 # 2
 def validate_password(password):
     """
@@ -84,6 +93,13 @@ def validate_password(password):
     return True
 
 
+print("-Validate password test-")
+print("input: ''    Result: " + str(validate_password("")))
+print("input: '12345678'    Result: " + str(validate_password("12345678")))
+print("input: 'Ab#deFg123'    Result: " + str(validate_password("Ab#deFg123")))
+print("input: '#@!$%&%$!@#'    Result: " + str(validate_password("#@!$%&%$!@#")))
+
+
 # 3
 def calculate_total_discount(total_amount):
     """
@@ -96,6 +112,12 @@ def calculate_total_discount(total_amount):
         return 0.1 * total_amount
 
     return 0.2 * total_amount
+
+
+print("-Validate total discount-")
+print("input: 0    Result: " + str(calculate_total_discount(0)))
+print("input: 250    Result: " + str(calculate_total_discount(250)))
+print("input: 600    Result: " + str(calculate_total_discount(600)))
 
 
 # 4
