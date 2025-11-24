@@ -1,0 +1,36 @@
+4:
+
+- 0	?
+- 1	no discount
+- 5	no discount
+- 0.99	?
+- 5.01	?
+- 6 	5%
+- 10 	5%
+- 11	10%
+- 10.01 10%
+- null	?
+- -1	?
+- "texto" ?
+- esto es por item, habría que revisar primero items en separado, luego hacer una compra de diferentes items juntos y ver si sigue funcionando bien.
+
+5:
+STANDARD
+- 5 	$10 (considerando el orden de las condiciones)
+- 0	$10
+- 5.01	$15
+- 10	$15
+- 10.01 $20
+- 20 	$20
+EXPRESS
+- 0	$20
+- 5 	$20 (considerando el orden de las condiciones)
+- 5.01 	$30
+- 10	$30
+- 10.01 $40
+- 20 	$40
+
+Para ambos:
+- -1	?
+- "texto" ?
+- null 	?
