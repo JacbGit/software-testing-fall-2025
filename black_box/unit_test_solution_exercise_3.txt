@@ -1,0 +1,8 @@
+Test cases:
+  -99  no discount
+  -99.999 no discount
+  -100 10% discount
+  -500 10% discount
+  -501 20% discount
+  -500.9999 20% discount
+  -1000 20% discount
